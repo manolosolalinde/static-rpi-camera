@@ -1,0 +1,16 @@
+[Unit]
+Description=ReplayBoxService
+After=graphical.target multi-user.target
+Wants=troubleshoot.service
+
+[Service]
+Type=idle
+ExecStart=/usr/bin/python3 /home/pi/BITBUCKET/static-camera/application.py
+Restart=always
+RestartSec=30
+User=pi
+WorkingDirectory=/home/pi/BITBUCKET/static-camera
+
+[Install]
+WantedBy=multi-user.target
+
