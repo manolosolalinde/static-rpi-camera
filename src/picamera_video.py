@@ -291,7 +291,7 @@ class CameraServer(CameraUtility,ComunicationServer):
 
 class CameraClient(CameraUtility,ComunicationClient):
 
-    def init_client(self,dhost='replaybox001.local',dport=9999):
+    def init_client(self,dhost='replaybox001',dport=9999):
         ComunicationClient.init(self,dhost,dport)
     
     def close(self):

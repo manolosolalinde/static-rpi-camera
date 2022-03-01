@@ -143,7 +143,7 @@ class ComunicationClient():
         pass
 
 if __name__ == "__main__":
-    client = ComunicationClient('replaybox001.local')
+    client = ComunicationClient('replaybox001')
     # import code
     # code.interact(local=dict(globals(), **locals()))
     # client.server.send_input()
