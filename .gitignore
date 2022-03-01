@@ -10,3 +10,4 @@ output/saved/*
 !*.sh
 .vscode
 *__pycache*
+**auth.json
