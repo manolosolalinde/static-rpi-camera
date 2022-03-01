@@ -1,0 +1,12 @@
+*.mkv
+*.mp4
+*.aac
+*.h264
+output/*.jpg
+output/*.mp4
+output/*.mkv
+output/*.txt
+output/saved/*
+!*.sh
+.vscode
+*__pycache*
