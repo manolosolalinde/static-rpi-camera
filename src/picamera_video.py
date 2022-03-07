@@ -34,13 +34,16 @@ class CameraUtility():
         '''
         Nota resoluciones: https://picamera.readthedocs.io/en/release-1.12/fov.html
         '''
-        self.camera = picamera.PiCamera(resolution='1296x972', framerate=25)#1920x1080
+        # self.camera = picamera.PiCamera(resolution='1296x972', framerate=25)#1920x1080
+        self.camera = picamera.PiCamera(resolution='1920x1080', framerate=25)#1920x1080
         self.STREAM_PORT = 8000
         self.HOST = ''
         global output_mustbelocal
         output_mustbelocal = self.StreamingOutput()
         print("camera initialized")
         self._audiodev = self.getaudiodevice()
+        self.stream_resolution = '320x240'
+        self.stream = None
 
     # to be overriden
     def init(self):
@@ -60,14 +63,63 @@ class CameraUtility():
                     line[line.find("device")+7]
                     return audiodev
         return None
+    
+    def change_live_parameters(self,parameters):
+        '''
+        check https://picamera.readthedocs.io/en/release-1.12/api_camera.html
+        '''
+        default_parameters = {
+            'brigthness':50,
+            'brigthness_limits':[0,100],
+            'contrast':0,
+            'contrast_limits':[-100,100],
+            'saturation':0,
+            'saturation_limits':[-100,100],
+            'sharpness':0,
+            'sharpness_limits':[-100,100],
+            'shutter_speed':0,
+            'shutter_speed_limits':[0,60000],
+            'exposure_compensation':0,
+            'exposure_compensation_limits':[-25,25],
+            'iso':0,
+            'iso_limits':[0,1600],
+            '':0,
+            '_limits':[-100,100],
+            '':0,
+            '_limits':[-100,100],
+            'awb_mode':'auto',
+            'awb_mode_options':['off','auto','sunlight','cloudy','shade','tungsten','fluorescent','incandescent','flash','horizon'],
+            'exposure_mode':'auto',
+            'exposure_mode_options':['off','auto','night','nightpreview','backlight','spotlight','sports','snow','beach','verylong','fixedfps','antishake','fireworks']
+        }
 
-    def start_streaming(self):
+
+    def change_stream_resolution(self,resolution='320x240'):
+        if resolution == self.stream_resolution:
+            return
+        if self.stream is None:
+            self.stream_resolution = resolution
+            return
+        else:
+            self.stream_resolution = resolution
+            self.stop_streaming()
+            self.start_streaming(resolution)
+
+    def start_streaming(self,resolution='320x240'):
+        '''
+        compare with: raspivid -o myvid.h264 -w 1920 -h 1080
+        '''
         # firing up the video camera (pi camera)
         # self.camera.vflip = True
         # self.camera.hflip = True
         # self.camera.zoom = (0.35,0.35,0.3,0.3)
-        self.camera.start_recording(output_mustbelocal, resize=(
-            320, 240), format='mjpeg', splitter_port=1) #1920x1080 #320x240
+        self.stream_resolution = resolution
+        if resolution == '320x240':
+            self.camera.start_recording(output_mustbelocal, resize=(
+                320, 240), format='mjpeg', splitter_port=1) #1920x1080 #320x240
+        elif resolution == '1920x1080':
+            self.camera.start_recording(output_mustbelocal, resize=(
+                1920, 1080), format='mjpeg', splitter_port=1) #1920x1080 #320x240
         # self.camera.start_recording(output_mustbelocal, format='mjpeg', splitter_port=2)
         logging.info("Started streaming with picamera")
 
@@ -164,6 +216,7 @@ class CameraUtility():
 
         # and finalize shutting them down
         self.streamserver.join()
+        self.stream = None
         # self.streamserver._delete()
 
         # import code
@@ -269,9 +322,9 @@ class CameraServer(CameraUtility,ComunicationServer):
         CameraUtility.close(self)
         ComunicationServer.close(self)
 
-    def start_streaming(self):
+    def start_streaming(self,resolution='320x240'):
         ComunicationServer.broadcast(self,"start_streaming")
-        CameraUtility.start_streaming(self)
+        CameraUtility.start_streaming(self,resolution)
 
     def stop_streaming(self):
         ComunicationServer.broadcast(self,"stop_streaming")

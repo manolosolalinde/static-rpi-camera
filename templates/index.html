@@ -82,6 +82,19 @@
     <span class="slider round"></span>
     </label>
     <br>
+    <select name="resolution" id="resolution">
+        <option value="320x240">320x240</option>
+        <option value="1920x1080">1920x1080</option>
+      </select>
+
+    <br>
+    <a href="http://replaybox001:8000/stream.mjpg" >
+        stream1
+    </a>
+    <br>
+    <a href="http://replaybox002.local:8000/stream.mjpg" >
+        stream2
+    </a>
     <br>
     <img id='video_source' src="image.jpg" onerror='alert("The image could not be loaded.")' width="400" height="300">
     <img id='video_source2' src="image.jpg" onerror='alert("The image could not be loaded.")' width="400" height="300" hidden=True>

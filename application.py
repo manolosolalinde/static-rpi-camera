@@ -43,7 +43,7 @@ app = Flask(__name__, static_url_path='')
 app.config["SECRET_KEY"] = os.getenv("SECRET_KEY")
 
 
-socketio = SocketIO(app)
+socketio = SocketIO(app,cors_allowed_origins="*")
 logging.basicConfig(level=logging.DEBUG)
 
 
@@ -71,10 +71,14 @@ def index():
 def initial_setup():
     emit("initial message",initial_message,broadcast=True)
     emit("update switches", switches, broadcast=True)
+    emit("resolution change", {'resolution':'320x240'}, broadcast=True)
 
 
 @socketio.on("switch change")
 def switch_change(data):
+    '''
+    turn camera on or off
+    '''
     key = list(data.keys())[0]
     switches[key] = data[key]
     if key == 'onoff':
@@ -93,6 +97,17 @@ def switch_change(data):
             camerautility.stop_recording()
     print(switches)
     emit("update switches", switches, broadcast=True)
+
+@socketio.on("resolution change")
+def resolution_change(data):
+    resolution = data['resolution']
+    if resolution == '1920x1080':
+        camerautility.change_stream_resolution('1920x1080')
+    elif resolution == '320x240':
+        camerautility.change_stream_resolution('320x240')
+    else:
+        print('resolution not supported')
+
 
 try:
     socketio.run(app, port=5000, host='0.0.0.0', debug=True, use_reloader=False)
