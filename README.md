@@ -1,14 +1,5 @@
-# static-rpi-camera
+Tutorial and example files on:
 
+https://www.youtube.com/watch?v=NShoNnP0hzY
 
-```
-git remote add origin https://github.com/manolosolalinde/static-rpi-camera.git
-```
-
-
-# Utilities
-
-test camera:
-```bash
-raspistill -o testshot.jpg
-```
+https://github.com/miguelgrinberg/quick-socketio-tutorial/tree/part10

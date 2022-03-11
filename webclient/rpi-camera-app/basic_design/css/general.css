@@ -1,0 +1,29 @@
+.form-label {
+    /* display:block; */
+    /* float:left; */
+    /* background-color: lightgray; */
+    width: 150px;
+    margin-right: 10px;
+    text-align: right;
+    font-weight: bold;
+}
+
+.auto-switch {
+    border: 1px;
+}
+
+.rangeclass {
+    display: inline-flex;
+}
+
+
+.prop-group {
+    display:flex;
+    margin-bottom: 3px;
+}
+
+.output{
+    border: 1px solid #2196F3;
+    /* background-color: white; */
+    /* padding: 10px; */
+}

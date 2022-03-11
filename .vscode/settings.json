@@ -1,0 +1,4 @@
+{
+    // pylint enable only errors
+    "python.linting.pylintArgs": ["--errors-only"],
+}

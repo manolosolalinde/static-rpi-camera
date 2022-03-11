@@ -1,0 +1,39 @@
+
+body {
+    padding: 30px 0px;
+}
+
+.prop-group {
+    display:flex;
+    margin-top: 15px;
+    margin-bottom: 3px;
+}
+
+.form-label {
+    /* display:block; */
+    /* float:left; */
+    /* background-color: lightgray; */
+    width: 70px;
+    margin-right: 10px;
+    text-align: right;
+    vertical-align: center;
+    font-weight: bold;
+    margin-bottom: 0 !important;
+}
+
+.auto-switch {
+    border: 1px;
+}
+
+.rangeclass {
+    display: inline-flex;
+}
+
+
+
+
+.output{
+    border: 1px solid #2196F3;
+    /* background-color: white; */
+    /* padding: 10px; */
+}
