@@ -14,7 +14,8 @@ from flask_socketio import SocketIO, emit,join_room, leave_room
 app = Flask(__name__, static_url_path='')
 # app.config["SECRET_KEY"] = os.getenv("SECRET_KEY")
 
-socketio = SocketIO(app,cors_allowed_origins="*",ping_timeout=10,ping_interval=25)
+socketio = SocketIO(app,cors_allowed_origins="*")
+# socketio = SocketIO(app,cors_allowed_origins="*",ping_timeout=60,ping_interval=25)
     # :param ping_timeout: The time in seconds that the client waits for the
     #                      server to respond before disconnecting. The default is
     #                      60 seconds.
@@ -43,6 +44,11 @@ import random
 
 webclients = []
 camera_clients = []
+
+
+@app.route('/')
+def index():
+    return 'server is up and running...'
 
 
 # WEBCLIENTS----------------------------
