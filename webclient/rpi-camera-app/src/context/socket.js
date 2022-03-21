@@ -1,7 +1,7 @@
 import React from "react";
 // import socketio from "socket.io-client";
 import { io } from "socket.io-client";
-const SOCKET_URL = 'http://localhost:5000';
+const SOCKET_URL = 'http://replaybox001.local:5000';
 export const SocketContext = React.createContext();
 
 // export const socket = socketio.connect(SOCKET_URL);

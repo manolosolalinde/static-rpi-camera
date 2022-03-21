@@ -3,37 +3,24 @@ body {
     padding: 30px 0px;
 }
 
-.prop-group {
-    display:flex;
-    margin-top: 15px;
-    margin-bottom: 3px;
-}
-
-.form-label {
-    /* display:block; */
-    /* float:left; */
-    /* background-color: lightgray; */
-    width: 70px;
-    margin-right: 10px;
-    text-align: right;
-    vertical-align: center;
+.nav-item a {
+    /* bold */
     font-weight: bold;
-    margin-bottom: 0 !important;
 }
 
-.auto-switch {
-    border: 1px;
-}
+/* original css */
 
-.rangeclass {
-    display: inline-flex;
-}
-
-
-
-
-.output{
-    border: 1px solid #2196F3;
-    /* background-color: white; */
-    /* padding: 10px; */
-}
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+      monospace;
+  }
+  

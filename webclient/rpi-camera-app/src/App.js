@@ -2,9 +2,9 @@
 import './css/general.css';
 import './css/range-slider.css';
 import './css/switch.css';
+import './css/controller.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Settings from './components/settings';
-import StreamImage from './components/stream_image';
 import React from 'react';
 import {SocketContext, socket } from './context/socket';
 
@@ -19,7 +19,6 @@ function App() {
         <h1>header settings</h1>
       </header> */}
         <main>
-          <StreamImage />
           <Settings />
         </main>
       </div>

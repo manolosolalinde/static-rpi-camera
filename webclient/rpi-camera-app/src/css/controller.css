@@ -1,0 +1,95 @@
+
+
+.controller .rangeclass {
+    display: inline-flex;
+}
+
+.controller .option {
+    width: 150px;
+}
+
+/* .controller .option .form-control {
+    text-align: right;
+    padding-right: 20px;
+} */
+
+
+
+
+/* GENERAL CONTROLLER PROPERTIES -------------------- */
+
+.controller {
+    border-top: 1px solid lightgray;
+    border-bottom: 1px solid lightgray;
+    width:100vh;
+    width:100%;
+    /* max-width: 700px; */
+}
+
+@media screen and (min-width: 700px) {
+    .controller {
+        border-right: 1px solid lightgray;
+    }
+}
+    
+
+.prop-group {
+    display:flex;
+    margin-top: 9px;
+    margin-bottom: 9px;
+}
+
+/* small screens */
+@media screen and (max-width: 768px) {
+    .prop-group label {
+        text-align: left;
+        /* align text bottom */
+    }
+}
+
+.form-label {
+    padding-left: 15px;
+    /* display:block; */
+    /* float:left; */
+    /* background-color: lightgray; */
+    width: 210px;
+    margin-right: 10px;
+    text-align: right;
+    vertical-align: center;
+    /* font-weight: bold; */
+    margin-bottom: 0 !important;
+}
+
+
+
+.auto-switch {
+    border: 1px;
+}
+
+
+
+
+
+.controller-output, .controller-input{
+    border: 1px solid #2196F3;
+    width: 60px;
+    /* center text */
+    text-align: center;
+    /* background-color: white; */
+    /* padding: 10px; */
+}
+
+.controller-output {
+    background-color: lightgray;
+}
+
+.controller-input input {
+    width: 100%;
+    padding: 0;
+    border: 0;
+    text-align: center;
+}
+
+.controller-input input:focus-visible{
+    outline: none;
+}
